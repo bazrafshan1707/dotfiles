@@ -1,0 +1,53 @@
+#!/usr/bin/sh
+#
+# Setup dotfiles
+
+URL="https://github.com/bazrafshan1707/dotfiles.git"
+GIT_DIR="$HOME/.dotfiles"
+
+dotfile() {
+	git --git-dir=$GIT_DIR --work-tree=$HOME $@
+}
+
+cleanup() {
+	rm -rf $GIT_DIR
+}
+
+git clone --bare $URL $GIT_DIR
+if [ $? -ne 0 ]; then
+	echo "Failed."
+	exit 1
+fi
+
+dotfile checkout
+if [ $? != 0 ]; then
+	while true; do
+		read -p "Checkout failed; Do you want to force it? (yes/no): " answer
+
+		case "$answer" in
+			yes)
+				dotfile checkout -f
+				if [ $? != 0 ]; then
+					echo "Checkout failed again. I can't handle this."
+					cleanup
+					exit 1
+				fi
+				break
+				;;
+			no)
+				echo "Exiting."
+				cleanup
+				exit 1
+				;;
+			*)
+				echo "Invalid input."
+				;;
+		esac
+	done
+fi
+
+set -e
+dotfile config --local status.showUntrackedFiles no
+
+echo "Dotfiles are set up! Restart your shell."
+exit 0
