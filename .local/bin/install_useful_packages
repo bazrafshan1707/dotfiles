@@ -1,0 +1,23 @@
+#!/usr/bin/sh
+#
+# Install some useful packages
+
+pkgs=(
+	"networkmanager"
+	"vim"
+	"sudo"
+	"xorg"
+	"xorg-xinit"
+	"i3"
+	"dmenu"
+	"gnome-terminal"
+	"thunar"
+	"android-file-transfer"
+	"git"
+	"udisks2"
+)
+
+pacman -Syu --noconfirm
+for pkg in ${pkgs[@]}; do
+	pacman -S --noconfirm --needed ${pkg}
+done
