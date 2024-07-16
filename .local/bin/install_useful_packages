@@ -17,6 +17,7 @@ pkgs=(
 	"udisks2"
 	"lxappearance"
 	"gnome-themes-extra"
+	"ttf-dejavu"
 )
 
 pacman -Syu --noconfirm
