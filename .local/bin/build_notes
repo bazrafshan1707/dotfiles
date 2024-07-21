@@ -1,0 +1,20 @@
+#!/usr/bin/bash
+#
+# Build my notes into a pdf file
+
+if [[ "$1" ]]; then
+	path=$(realpath "$1")
+else
+	path=$(realpath ".")
+fi
+
+if [[ ! -d "$path" ]]; then
+	echo "Error: $path is not a valid directory."
+	exit 1
+fi
+
+output=$path/output.pdf
+
+pandoc --toc -V documentclass=report --file-scope --metadata title="Notes" "$path"/*.md -o "$output"
+
+echo "$output is built."
