@@ -1,0 +1,6 @@
+[user]
+	name = Ali Bazrafshan
+	email = ali@bazrafshan.net
+	signingKey = 1CFBB7E9D1638C46
+[commit]
+	gpgSign = true
