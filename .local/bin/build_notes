@@ -2,6 +2,29 @@
 #
 # Build my notes into a pdf file
 
+usage() {
+	echo "Usage: $0 -t title [path]"
+}
+
+while getopts "t:" opt; do
+	case "$opt" in
+		t)
+			title="$OPTARG"
+			;;
+		*)
+			usage
+			exit 1
+			;;
+	esac
+done
+
+if [[ -z "$title" ]]; then
+	usage
+	exit 1
+fi
+
+shift $((OPTIND-1))
+
 if [[ "$1" ]]; then
 	path=$(realpath "$1")
 else
@@ -15,6 +38,6 @@ fi
 
 output=$path/output.pdf
 
-pandoc --toc -V documentclass=report --file-scope --metadata title="Notes" "$path"/*.md -o "$output"
+pandoc --toc -V documentclass=report --file-scope --metadata title="$title" "$path"/*.md -o "$output"
 
 echo "$output is built."
