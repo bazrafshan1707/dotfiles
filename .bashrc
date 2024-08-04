@@ -12,3 +12,5 @@ PS1='[\u@\h \W]\$ '
 alias dotfile='git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
 
 export PATH="$HOME/.local/bin/:$PATH"
+
+export GPG_TTY=$(tty)
