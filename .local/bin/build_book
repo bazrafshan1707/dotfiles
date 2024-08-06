@@ -38,6 +38,15 @@ fi
 
 output="$path/$title.pdf"
 
-pandoc --toc -V documentclass=report --file-scope --metadata title="$title" "$path"/*.md -o "$output"
+pandoc \
+--toc \
+-V documentclass=report \
+-V colorlinks=true \
+-V linkcolor=blue \
+-V urlcolor=blue \
+-V toccolor=blue \
+--file-scope \
+--metadata title="$title" \
+"$path"/*.md -o "$output"
 
 echo "$output is built."
