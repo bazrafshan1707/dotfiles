@@ -2,6 +2,8 @@
 #
 # Build my notes into a pdf file
 
+set -e
+
 usage() {
 	echo "Usage: $0 -t title [path]"
 }
