@@ -47,6 +47,7 @@ if [ $? != 0 ]; then
 fi
 
 set -e
+dotfile submodule update --init
 dotfile config --local status.showUntrackedFiles no
 
 echo "Dotfiles are set up! Restart your shell."
