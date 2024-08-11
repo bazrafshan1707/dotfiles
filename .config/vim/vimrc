@@ -4,3 +4,10 @@ syntax enable
 
 au BufEnter todo.md setlocal foldminlines=0
 au BufEnter todo.md setlocal foldmethod=indent
+
+" Plugins
+call plug#begin()
+
+Plug 'tpope/vim-surround'
+
+call plug#end()
