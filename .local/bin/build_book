@@ -47,6 +47,7 @@ pandoc \
 -V linkcolor=blue \
 -V urlcolor=blue \
 -V toccolor=blue \
+--highlight-style=tango \
 --file-scope \
 --metadata title="$title" \
 "$path"/*.md -o "$output"
