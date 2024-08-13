@@ -2,7 +2,22 @@
 #
 # Install some useful packages
 
+set -e
+
+prepare() {
+	sudo -k
+	temp_dir=$(mktemp -d)
+}
+
+cleanup() {
+	rm -rf $temp_dir
+}
+
+prepare
+trap cleanup EXIT
+
 pkgs=(
+	"base-devel"
 	"networkmanager"
 	"vim"
 	"sudo"
@@ -24,7 +39,15 @@ pkgs=(
 	"ripgrep"
 )
 
-pacman -Syu --noconfirm
+sudo pacman -Syu --noconfirm
 for pkg in ${pkgs[@]}; do
-	pacman -S --noconfirm --needed ${pkg}
+	sudo pacman -S --noconfirm --needed ${pkg}
 done
+
+# Install paru
+cd $temp_dir
+git clone https://aur.archlinux.org/paru.git
+cd paru
+makepkg -si
+
+echo "Installation completed."
