@@ -6,6 +6,8 @@ syntax enable
 au BufEnter todo.md setlocal foldminlines=0
 au BufEnter todo.md setlocal foldmethod=indent
 
+let g:netrw_liststyle = 3
+
 " Plugins
 call plug#begin()
 
