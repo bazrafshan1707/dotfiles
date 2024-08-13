@@ -21,6 +21,7 @@ pkgs=(
 	"lxappearance"
 	"gnome-themes-extra"
 	"ttf-dejavu"
+	"ripgrep"
 )
 
 pacman -Syu --noconfirm
