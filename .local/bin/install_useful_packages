@@ -45,9 +45,11 @@ for pkg in ${pkgs[@]}; do
 done
 
 # Install paru
-cd $temp_dir
-git clone https://aur.archlinux.org/paru.git
-cd paru
-makepkg -si
+if ! command -v paru &> /dev/null; then
+	cd $temp_dir
+	git clone https://aur.archlinux.org/paru.git
+	cd paru
+	makepkg -si
+fi
 
 echo "Installation completed."
