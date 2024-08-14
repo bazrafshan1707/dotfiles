@@ -2,6 +2,7 @@ set backspace=indent,eol,start
 set splitbelow splitright
 set background=dark
 set termguicolors
+set autoindent
 
 syntax enable
 
