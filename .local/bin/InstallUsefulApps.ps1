@@ -6,3 +6,12 @@ if (-not (Get-Command scoop -ErrorAction SilentlyContinue)) {
 else {
 	scoop update
 }
+
+$packages = @(
+	'vim'
+)
+
+foreach ( $package in $packages )
+{
+	scoop install $package
+}
