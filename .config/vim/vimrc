@@ -16,12 +16,10 @@ au Filetype cs setlocal tabstop=4 shiftwidth=0 expandtab
 let g:netrw_liststyle = 3
 
 " Plugins
-
-packadd! comment
-
 call plug#begin()
 
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
 Plug 'morhetz/gruvbox'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
