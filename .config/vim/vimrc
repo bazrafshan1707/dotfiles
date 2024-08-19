@@ -29,14 +29,12 @@ call plug#end()
 
 " Add and configure LSP servers
 let lspServers = []
-if has('unix')
-	if executable('omnisharp')
-		let lspServers += [#{name: 'omnisharp',
-					\ filetype: 'cs',
-					\ path: 'omnisharp',
-					\ args: ['-z', '-lsp', '-e', 'utf-8']
-					\}]
-	endif
+if executable('omnisharp')
+	let lspServers += [#{name: 'omnisharp',
+				\ filetype: 'cs',
+				\ path: 'omnisharp',
+				\ args: ['-z', '-lsp', '-e', 'utf-8']
+				\}]
 endif
 
 autocmd User LspSetup call LspAddServer(lspServers)
