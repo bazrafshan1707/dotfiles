@@ -1,14 +1,12 @@
 set backspace=indent,eol,start
 set splitbelow splitright
 set background=dark
-set termguicolors
 set autoindent
 
 syntax enable
 
 au BufEnter todo.md setlocal foldminlines=0
 au BufEnter todo.md setlocal foldmethod=indent
-au VimEnter * ++nested colorscheme gruvbox
 
 " Filetype-sepecific configurations
 au Filetype cs setlocal tabstop=4 shiftwidth=0 expandtab
@@ -20,7 +18,6 @@ call plug#begin()
 
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
-Plug 'morhetz/gruvbox'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'yegappan/lsp'
