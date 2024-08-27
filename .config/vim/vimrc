@@ -51,3 +51,13 @@ noremap <Leader>ff    :LspFormat<CR>
 noremap <Leader>fo    :LspFold<CR>
 noremap <Leader><F2>  :LspRename<CR>
 noremap <Leader><F12> :LspGotoDefinition<CR>
+
+" Colors
+
+if (has("termguicolors"))
+	set termguicolors
+endif
+if &background == 'dark'
+	highlight Normal guibg=#282828 guifg=#ebdbb2
+	highlight NonText guifg=#504945
+endif
