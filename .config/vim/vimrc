@@ -17,37 +17,8 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'yegappan/lsp'
 
 call plug#end()
-
-" Add and configure LSP servers
-let lspServers = []
-if executable('omnisharp')
-	let lspServers += [#{name: 'omnisharp',
-				\ filetype: 'cs',
-				\ path: 'omnisharp',
-				\ args: ['-z', '-lsp', '-e', 'utf-8']
-				\}]
-endif
-
-autocmd User LspSetup call LspAddServer(lspServers)
-
-" Mappings
-
-" LSP
-let mapleader = ','
-
-noremap <Leader>dd    :LspDiag current<CR>
-noremap <Leader>ds    :LspDiag show<CR>
-noremap <Leader>df    :LspDiag first<CR>
-noremap <Leader>dn    :LspDiag next<CR>
-noremap <Leader>dp    :LspDiag prev<CR>
-noremap <Leader>h     :LspHover<CR>
-noremap <Leader>ff    :LspFormat<CR>
-noremap <Leader>fo    :LspFold<CR>
-noremap <Leader><F2>  :LspRename<CR>
-noremap <Leader><F12> :LspGotoDefinition<CR>
 
 " Colors
 
